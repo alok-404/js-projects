@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Creator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <aside class="form-container">
+            <h2>Add New Profile</h2>
+            <form id="profileForm">
+                <div class="input-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="e.g. Alex Rivera" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="role">Role</label>
+                    <input type="text" id="role" placeholder="e.g. Frontend Developer" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="bio">Short Bio</label>
+                    <textarea id="bio" rows="3" placeholder="Tell us a bit about yourself..." required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="image">Profile Image URL</label>
+                    <input type="url" id="image" placeholder="https://example.com/photo.jpg" required>
+                </div>
+
+                <button type="submit" id="submitBtn">Create Profile</button>
+            </form>
+        </aside>
+
+        <main class="display-area" id="profileGrid">
+            <!-- <div class="profile-card">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="Profile Picture" class="profile-img">
+                <div class="profile-info">
+                    <h3>John Doe</h3>
+                    <p class="role-tag">UI Designer</p>
+                    <p class="bio-text">Passionate about creating accessible and beautiful user interfaces for the modern web.</p>
+                </div>
+            </div> -->
+        </main>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

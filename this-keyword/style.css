@@ -1,0 +1,118 @@
+:root {
+    --primary: #6366f1;
+    --bg-color: #5b5c5c;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    margin: 0;
+    color: var(--text-main);
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Form Styles */
+.form-container {
+    flex: 1;
+    min-width: 300px;
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+}
+
+.input-group {
+    margin-bottom: 1.2rem;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    box-sizing: border-box; /* Ensures padding doesn't break width */
+}
+
+button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background-color: #4f46e5;
+}
+
+/* Card Grid Styles */
+.display-area {
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.profile-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+}
+
+.profile-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.profile-info {
+    padding: 1.5rem;
+}
+
+.profile-info h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.role-tag {
+    color: var(--primary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0.5rem 0;
+}
+
+.bio-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
