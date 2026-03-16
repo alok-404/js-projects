@@ -28,16 +28,15 @@ function savedPostLekarAao(id, cb) {
   console.log("fetching all saved...");
   setTimeout(() => {
     cb({ _id: id, saved: 10 });
-  },5000);
+  }, 5000);
 }
 
 profileLekarAoo("alok", function (data) {
   console.log(data);
   saarePostLekarAao(data._id, function (posts) {
     console.log(posts);
-      savedPostLekarAao(data._id, function (saved) {
-    console.log(saved);
+    savedPostLekarAao(data._id, function (saved) {
+      console.log(saved);
+    });
   });
-  });
-
 });
