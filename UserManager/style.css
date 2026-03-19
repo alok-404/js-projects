@@ -1,89 +1,206 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+:root {
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --text-main: #1e293b;
+  --text-sub: #64748b;
+  --border-color: #e2e8f0;
+  --primary-blue: #3b82f6;
+  --danger-red: #ef4444;
+  --success-green: #22c55e;
 }
+
+.dark-theme {
+  --bg-color: #0f172a;
+  --card-bg: #1e293b;
+  --text-main: #f8fafc;
+  --text-sub: #94a3b8;
+  --border-color: #334155;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
 body {
-  background: #0f172a;
-  color: #fff;
+  background: var(--bg-color);
+  color: var(--text-main);
+  transition: all 0.3s ease;
   display: flex;
   justify-content: center;
-  padding: 40px;
+  padding: 40px 20px;
 }
 
-.container {
-  width: 100%;
-  max-width: 600px;
+.container { width: 100%; max-width: 900px; }
+
+/* Header & Filters */
+.header-section { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+h1 { font-size: 24px; font-weight: 700; color: var(--text-main); }
+
+.filter-bar { display: flex; gap: 10px; margin-bottom: 20px; }
+.filter-dropdown {
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  color: var(--text-sub);
 }
-.container .header {
+.search-container{
   display: flex;
-
   align-items: center;
   justify-content: space-around;
 }
-.resetBtn {
-  background: #332b4b;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
-}
-.resetBtn:hover{
-  background-color: azure;
-  color: #0f172a;
-}
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
+
+/* Inputs */
+#searchInput, .add-user input {
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--card-bg);
+  color: var(--text-main);
+  margin-bottom: 15px;
 }
 
-#searchInput {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: none;
-  border-radius: 6px;
-  outline: none;
-  font-size: 16px;
+.add-user { display: flex; gap: 10px; margin-bottom: 30px; }
+.add-user input { flex: 1; margin-bottom: 0; }
+
+/* Table Simulation */
+.table-header {
+  display: flex;
+  padding: 12px 20px;
+  color: var(--text-sub);
+  font-weight: 600;
+  font-size: 14px;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  background: var(--card-bg);
+  border-radius: 8px 8px 0 0;
 }
 
 .user-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0 0 8px 8px;
 }
 
 .user-card {
-  background: #1e293b;
-  padding: 15px;
-  border-radius: 8px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.user-info {
-  display: flex;
-  flex-direction: column;
+.user-card:last-child { border-bottom: none; }
+
+/* Column Widths to match the image */
+.col-user, .user-info { flex: 3; }
+.col-role, .role-badge { flex: 1.5; text-align: center; }
+.col-perm { flex: 1.5; text-align: center; }
+.col-action { flex: 2; text-align: right; }
+
+.user-info strong { display: block; color: var(--text-main); }
+.user-info span { font-size: 12px; color: var(--text-sub); }
+
+/* Buttons & Badges */
+button { padding: 8px 16px; border-radius: 6px; border: none; cursor: pointer; font-weight: 600; transition: 0.2s; }
+
+.resetBtn, .secondary-btn { background: #e2e8f0; color: #475569; }
+.resetBtn:hover { background: #cbd5e1; }
+
+#addBtn { background: var(--primary-blue); color: white; }
+
+.user-card button { font-size: 13px; margin-left: 5px; }
+
+/* Specific "Edit Role" button style from image */
+.edit-btn-style { background: #eff6ff; color: #3b82f6; border: 1px solid #dbeafe; }
+.delete-btn-style { background: #fef2f2; color: #ef4444; }
+
+/* Loading State Animation */
+.loading-spinner {
+  text-align: center;
+  padding: 40px;
+  font-style: italic;
+  color: var(--primary-blue);
+  animation: pulse 1.5s infinite;
 }
 
-.user-info span {
-  font-size: 14px;
-  color: #cbd5f5;
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
 }
 
-button {
-  background: #ef4444;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
-}
 
-button:hover {
-  background: #dc2626;
+/* Responsive Breakpoint */
+@media (max-width: 768px) {
+  body {
+    padding: 20px 10px;
+  }
+
+  /* 1. Stack the header and search/add sections */
+  .header-section, 
+  .add-user, 
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .add-user input {
+    width: 100%;
+  }
+
+  /* 2. Hide the desktop table header */
+  .table-header {
+    display: none;
+  }
+
+  /* 3. Transform Table Row into a Card */
+  .user-list {
+    border: none;
+    background: transparent;
+  }
+
+  .user-card {
+    flex-direction: column; /* Stack elements vertically */
+    align-items: flex-start;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    margin-bottom: 15px;
+    padding: 20px;
+    gap: 12px;
+  }
+
+  /* 4. Reset Flex widths for mobile */
+  .user-info, .role-badge, .col-perm, .col-action {
+    flex: none;
+    width: 100%;
+    text-align: left;
+  }
+
+  /* 5. Add "Labels" for data since the header is gone */
+  .role-badge::before {
+    content: "Role: ";
+    font-weight: 600;
+    color: var(--text-sub);
+  }
+
+  .col-perm::before {
+    content: "Permissions: ";
+    font-weight: 600;
+    color: var(--text-sub);
+  }
+
+  /* 6. Style Action Buttons for better touch targets */
+  .col-action {
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+    justify-content: flex-start;
+  }
+
+  .user-card button {
+    margin-left: 0;
+    flex: 1; /* Make buttons equal width on mobile */
+    padding: 12px;
+  }
 }

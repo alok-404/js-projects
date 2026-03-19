@@ -3,22 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>User Manager</title>
+  <title>UserManager</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-
-  <div class="container">
-    <div class="header">
-      <div> </div>
-      <h1>User Manager</h1>
-      <button class="resetBtn">Reset Users</button>
+<body class="light-theme"> <div class="container">
+    <div class="header-section">
+      <h1>User Manager App</h1>
+      <button id="themeToggle" class="secondary-btn">Toggle Theme</button>
     </div>
 
-    <!-- Search -->
-    <input type="text" id="searchInput" placeholder="Search users..." />
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search by name..." />
+      <button class="resetBtn">Reset Users</button>
 
-    <!-- Users List -->
+    </div>
+
+    <div class="add-user">
+      <input type="text" id="nameInput" placeholder="Enter name" />
+      <input type="email" id="emailInput" placeholder="Enter email" />
+      <button id="addBtn">Add User</button>
+    </div>
+
+    <div class="table-header">
+      <span class="col-user">User</span>
+      <span class="col-action">Actions</span>
+    </div>
+
     <div id="userList" class="user-list"></div>
   </div>
 
